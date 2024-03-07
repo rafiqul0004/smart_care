@@ -26,9 +26,13 @@ SECRET_KEY = 'django-insecure-t_j75f+e3&&#@cd^^0)&hjw8pc#eipp)2_j-5y6-v*a-)$ygkw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_ALL_ORIGINS=True
 
-ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://smart-care-rp5y.onrender.com','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://smart-care-rp5y.onrender.com']
+# ALLOWED_HOSTS = ["*"]
+# CSRF_TRUSTED_ORIGINS = ['https://smart-care-rp5y.onrender.com','https://*.127.0.0.1']
 
 # Application definition
 
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
+    'corsheaders',
     'rest_framework',
     'appointment',
     'doctor',
@@ -49,6 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
